@@ -137,7 +137,7 @@ cLine::tTokenIt cLine::transition(tTokenIt it,wstring str) {
   }
   else if(str[0] == L'W')
   {
-    cToken t(wstring(&str[1],str.end()));
+    cToken t(std::wstring(str, 1));
     if(t.isInt())
     {
       int smpte = t.integer();

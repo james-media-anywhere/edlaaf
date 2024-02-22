@@ -1,0 +1,87 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "default",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+            }
+        },
+        {
+          "name": "debug",
+          "displayName": "Debug",
+          "inherits": "default",
+          "binaryDir": "${sourceDir}/build_debug",
+          "installDir": "${sourceDir}/debug",
+          "condition": {
+            "type": "notEquals",
+            "lhs": "${hostSystemName}",
+            "rhs": "Darwin"
+          },
+          "cacheVariables": {
+            "CMAKE_BUILD_TYPE": "Debug"
+          }
+        },
+        {
+          "name": "release",
+          "displayName": "Release",
+          "inherits": "default",
+          "binaryDir": "${sourceDir}/build_release",
+          "installDir": "${sourceDir}/release",
+          "condition": {
+            "type": "notEquals",
+            "lhs": "${hostSystemName}",
+            "rhs": "Darwin"
+          },
+          "cacheVariables": {
+            "CMAKE_BUILD_TYPE": "Release"
+          }
+        },
+        {
+          "name": "release-symbols",
+          "displayName": "Release with Symbols",
+          "inherits": "default",
+          "binaryDir": "${sourceDir}/build_release",
+          "installDir": "${sourceDir}/release",
+          "condition": {
+            "type": "equals",
+            "lhs": "${hostSystemName}",
+            "rhs": "Windows"
+          },
+          "cacheVariables": {
+            "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+          }
+        },{
+          "name": "debug-apple",
+          "displayName": "Debug",
+          "inherits": "default",
+          "binaryDir": "${sourceDir}/build_debug",
+          "installDir": "${sourceDir}/debug",
+          "condition": {
+            "type": "equals",
+            "lhs": "${hostSystemName}",
+            "rhs": "Darwin"
+          },
+          "cacheVariables": {
+            "CMAKE_BUILD_TYPE": "Debug",
+            "CMAKE_OSX_ARCHITECTURES": "x86_64"
+          }
+        },
+        {
+          "name": "release-apple",
+          "displayName": "Release",
+          "inherits": "default",
+          "binaryDir": "${sourceDir}/build_release",
+          "installDir": "${sourceDir}/release",
+          "condition": {
+            "type": "equals",
+            "lhs": "${hostSystemName}",
+            "rhs": "Darwin"
+          },
+          "cacheVariables": {
+            "CMAKE_BUILD_TYPE": "Release",
+            "CMAKE_OSX_ARCHITECTURES": "x86_64"
+          }
+        }
+    ]
+}

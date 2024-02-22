@@ -21,11 +21,11 @@ public:
     cUnknownPtr<IAAFSequence> pSequence);
 };
 
-template<>
-struct std::greater<cEvent::Ptr> : binary_function<_Ty, _Ty, bool> 
-{
-  bool operator()(const _Ty& x, const _Ty& y) const 
-  {
-    return y->tc() > x->tc();
-  }
-};
+// template<>
+// struct std::greater<cEvent::Ptr> : binary_function<_Ty, _Ty, bool> 
+// {
+//   bool operator()(const _Ty& x, const _Ty& y) const 
+//   {
+//     return y->tc() > x->tc();
+//   }
+// };

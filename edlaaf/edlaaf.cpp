@@ -14,7 +14,8 @@ const unsigned int NumAudioChannels = NUM_AUDIO_CHANNELS;
 
 wstring widen(const string & str) throw()
 {
-  const ctype<wchar_t>& char_facet = _USE(locale(),ctype<wchar_t>);
+  const ctype<wchar_t>& char_facet = std::use_facet<std::ctype<wchar_t> >(locale());
+  //const ctype<wchar_t>& char_facet = _USE(locale(),ctype<wchar_t>);
   wstring ret;
   ret.reserve(str.size());//avoid incremental allocation
   for(string::const_iterator it = str.begin(); it != str.end(); ++it)
@@ -53,7 +54,7 @@ int main(int argc, char* argv[])
 
   string edlname(argv[2]);
   edlname += ".edl";
-  wistream& in = wifstream(edlname.c_str());
+  wifstream in(edlname.c_str());
   if(in.fail())
   {
     wcerr << L"Error: Failed to open file " << widen(edlname.c_str()) << endl;

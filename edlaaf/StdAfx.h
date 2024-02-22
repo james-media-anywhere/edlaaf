@@ -12,6 +12,7 @@
 #endif
 
 #include <iostream>
+#include <string>
 #include <sstream>
 #include <fstream>
 #include <list>
@@ -20,7 +21,7 @@
 #include <iomanip>
 #include <assert.h>
 #include <locale>
-using namespace std;
+//using namespace std;
 
 #include "AAFTypes.h"
 #include "AAFResult.h"
@@ -37,5 +38,6 @@ using namespace std;
 
 #include "cUnknownPtr.h"
 
+using namespace std;
 
 #endif // #ifndef STDAFX_H

@@ -11,7 +11,8 @@
 
 string narrow(const wstring & str) throw()
 {
-  const ctype<wchar_t>& char_facet = _USE(locale(),ctype<wchar_t>);
+  const ctype<wchar_t>& char_facet = std::use_facet<std::ctype<wchar_t> >(locale());
+  //const ctype<wchar_t>& char_facet = _USE(locale(),ctype<wchar_t>);
   string ret;
   ret.reserve(str.size());//avoid incremental allocation
   for(wstring::const_iterator it = str.begin(); it != str.end(); ++it)
@@ -51,9 +52,9 @@ void cAafEdl::createAafFile(wstring filename)
   version.type = kAAFVersionDebug;
 
   aafProductIdentification_t ident;
-  ident.companyName = L"AAF example";
-  ident.productName = L"edlaaf";
-  ident.productVersionString = L"1.0.0.0";
+  ident.companyName = (wchar_t*)L"AAF example";
+  ident.productName = (wchar_t*)L"edlaaf";
+  ident.productVersionString = (wchar_t*)L"1.0.0.0";
   ident.productID.Data1 = 0x9438acfd;
   ident.productID.Data2 = 0xd233;
   ident.productID.Data3 = 0x41b0;
@@ -65,7 +66,7 @@ void cAafEdl::createAafFile(wstring filename)
   ident.productID.Data4[5] = 0xdc;
   ident.productID.Data4[6] = 0x48;
   ident.productID.Data4[7] = 0x4;
-  ident.platform = L"MS Windows 2000";
+  ident.platform = (wchar_t*)L"MS Windows 2000";
   ident.productVersion = &version;
 
   // Open the file
@@ -82,7 +83,7 @@ void cAafEdl::createAafFile(wstring filename)
 
 cTimeCode getTimeCode(aafRational_t rate,bool dropFrame)
 {
-  div_t d = div(rate.numerator,rate.denominator);
+  auto d = div(rate.numerator,rate.denominator);
   if(d.rem != 0) ++d.quot;
   return cTimeCode(0,(eFps)d.quot,dropFrame);
 }
