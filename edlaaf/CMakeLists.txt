@@ -2,7 +2,7 @@
 # project specific logic here.
 #
 
-add_executable (MeaAAF   
+add_executable (edlaaf   
 	cAafEdl.cpp
 	cCut.cpp
 	cDisolve.cpp
@@ -20,16 +20,16 @@ add_executable (MeaAAF
 	StdAfx.cpp
 )
 
-target_include_directories(MeaAAF PUBLIC 
+target_include_directories(edlaaf PUBLIC 
 	${AAF_INCLUDE_DIR}
 	${Boost_INCLUDE_DIR}
 )
 
-target_link_directories(MeaAAF PUBLIC 
+target_link_directories(edlaaf PUBLIC 
 	${AAF_LIB_DIR}
 )
 
-target_link_libraries(MeaAAF PUBLIC 
+target_link_libraries(edlaaf PUBLIC 
 	${Boost_LIBRARIES}
 	"aaf.lib"
 	"AAFCOAPI.lib"
