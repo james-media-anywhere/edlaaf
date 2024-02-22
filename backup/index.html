@@ -1,0 +1,353 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./index_files/filelist.xml">
+<title>edl2aaf supported constructs</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>James Westland Cain</o:Author>
+  <o:LastAuthor>james</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>2</o:TotalTime>
+  <o:Created>2001-11-07T18:38:00Z</o:Created>
+  <o:LastSaved>2001-11-07T18:38:00Z</o:LastSaved>
+  <o:Pages>4</o:Pages>
+  <o:Words>1205</o:Words>
+  <o:Characters>6869</o:Characters>
+  <o:Company>Home</o:Company>
+  <o:Lines>57</o:Lines>
+  <o:Paragraphs>13</o:Paragraphs>
+  <o:CharactersWithSpaces>8435</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-font-kerning:16.0pt;}
+h2
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic;}
+h3
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:Arial;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-GB style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<p class=MsoNormal><A href="http://sourceforge.net"> <IMG src="http://sourceforge.net/sflogo.php?group_id=21481" width="88" height="31" border="0" alt="SourceForge Logo"></A></p>
+
+<h1>edl2aaf supported constructs</h1>
+
+<h2>Usage</h2>
+
+<p class=MsoNormal>edl2aaf &lt;frames per second&gt; &lt;basename&gt;</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<h2>Program Command Line Parameters</h2>
+
+<p class=MsoNormal><b>frames per second</b> positive integer</p>
+
+<p class=MsoNormal>eg 24,25,30 ... Determines &lt;Frames Per Day&gt;</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>basename</b> String. &lt;basename&gt; is the filename
+without the &quot;.edl&quot; of the input edit decision list. Output file will
+be &lt;basename&gt;.aaf</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<h2>Build Parameters</h2>
+
+<p class=MsoNormal><b>NUM_AUDIO_TRACKS</b> defines the number of supported
+audio tracks. Minimum is two, Maximum not defined. Currently set to four.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>All text is read and stored as Unicode.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<h2>EDL Contents</h2>
+
+<p class=MsoNormal>Edl files have the following structure:</p>
+
+<p class=MsoNormal>Preamble</p>
+
+<p class=MsoNormal>[Statement]*</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<h3>Preamble</h3>
+
+<p class=MsoNormal><b>Title</b> &lt;title&gt; </p>
+
+<p class=MsoNormal>&lt;title&gt; String. &lt;title&gt; becomes CompositionMob
+name. The CompositionMob will have TimelineMobSlots with edit rate … and source
+rate …</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>FCM</b> One of {Drop Frame, Non-Drop Frame}</p>
+
+<p class=MsoNormal>First entry controls both source and destination timecodes.
+Any further FCM statements will affect all following source timecodes. Required
+when &lt;frames per second&gt; is 30 (and 24 ???). Drop Frame illegal when
+&lt;frames per second&gt; is 25.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<h2>Statement</h2>
+
+<p class=MsoNormal>One of {Edit Decision, Aud command, M2 command, Comment,
+Reel}</p>
+
+<h3>Edit Decisions</h3>
+
+<p class=MsoNormal>&lt;EditNum&gt; &lt;Tapename&gt; &lt;Channels&gt;
+&lt;Operation&gt; [Operation Duration] &lt;SourceInTime&gt;
+&lt;SourceOutTime&gt; &lt;DestInTime&gt; &lt;DestOutTime&gt;</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>EditNum</b> Integer. Added as KLV data to all the
+Components (SourceClips, Fillers, Transitions, OperationGroups) added to the
+TimeLineMobSlots due to this decision.</p>
+
+<p class=MsoNormal>Key for KLV edit Number = { 0xfedcba98, 0x2267, 0x11d3, {
+0x8a, 0x4c, 0x0, 0x50, 0x4, 0xe, 0xf7, 0xd2 } }. Length = 4 bytes, stored as
+integer.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>Tapename</b> String. Each unique name will create Source
+and Master Mob having 1 video, &lt;NUM_AUDIO_TRACKS&gt; audio and 1 timecode
+TimelineMobSlot. Each TimelineMobSlot will be &lt;Frames Per Day&gt; (modified
+by Source ??? FCM) long, starting at midnight. The edit rate is a rational:
+numerator = &lt;frames per second&gt; * 1000; denominator = 1000 or 1001
+depending upon &lt;FCM&gt;. The source rate … A single 'B' at end of name will
+be stripped (this indicates a B roll and is not relevant to non-linear suites).
+The Source Mob has a TapeEssenceDescriptor. There is a special case when the
+&lt;Tapename&gt; equals BL or BLK. This indicates black so Filler is used as
+the Segment in the CompositionMob for the edit decision instead of SourceClip.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>Channels </b>String. One of {NONE, A, B, V, A2, A2\V, AA,
+AA\V} Determines which channels of the source essence the edit decision applies
+to. &lt;NONE&gt; is useful if the edit decision is followed by an &lt;Aud&gt;
+command.</p>
+
+<p class=MsoNormal><b><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></b></p>
+
+<p class=MsoNormal><b>Operation</b> One of {C, D, W}</p>
+
+<p class=MsoNormal><b>C</b>: Cut - inserts a SouceClip (length =
+&lt;DestOutTime&gt; - &lt;DestInTime&gt;) into the &lt;channels&gt;
+TimeLineMobSlot of the CompositionMob. SourceRef.MobId = MasterMob of
+&lt;Tapename&gt;. SourceRef.SlotId = SlotId of MasterMob for &lt;channel&gt;.
+SourceRef.StartTime = &lt;DestInTime&gt; as frames from midnight (calculated
+using &lt;frames per second&gt; and &lt;FCM&gt; for destintion timecodes).</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>D</b>: Disolve - syntax demands that the preceding line
+is a cut with the same &lt;EditNum&gt; and that &lt;channels&gt; match. The
+&lt;SourceInTime&gt; of the cut determines the first frame that the edit will
+dissolve from. The dissolve will require &lt;SourceInTime&gt; + &lt;Operation
+Duration&gt; of source to be available. Inserts A SourceClip (length =
+&lt;Operation Duration&gt;), Transition (length = &lt;Operation Duration&gt;),
+SourceClip (length = &lt;SourceOutTime&gt; - &lt;SourceInTime&gt;) into the
+&lt;channels&gt; MobSlots of the Composition Mob. Video channels use an
+OperationDefinition of &lt;VideoDisolve&gt;. Audio channels use an
+OperationDefinition of &lt;MonoAudioDissolve&gt;. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>W</b>&lt;SMPTE wipe num&gt;: Wipe - syntax demands that
+the preceding line is a cut with the same &lt;EditNum&gt; and that
+&lt;channels&gt; match. The &lt;SourceInTime&gt; of the cut determines the
+first frame that the edit will wipe from. The wipe will require
+&lt;SourceInTime&gt; + &lt;Operation Duration&gt; of source to be available.
+Inserts A SourceClip (length = &lt;Operation Duration&gt;), Transition (length
+= &lt;Operation Duration&gt;), SourceClip (length = &lt;SourceOutTime&gt; -
+&lt;SourceInTime&gt;) into the &lt;channels&gt; MobSlots of the Composition
+Mob. &lt;SMPTE wipe num&gt; is the type of wipe as defined by SMPTE 258M-1993.
+The number may also be negative indicating that the wipe should be inverted.
+The Minus sign follows the W and precedes the &lt;SMPTE wipe num&gt; with no
+spaces. Video channels use an OperationDefinition of &lt;SMPTEVideoWipe&gt;
+with a Parameter of &lt;SMPTEWipeNumber&gt;. As audio does not support wipes
+Audio channels use an OperationDefinition of &lt;MonoAudioDissolve&gt;.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>Operation Duration</b> &lt;number&gt;</p>
+
+<p class=MsoNormal>Determines the number of frames for the dissolve or wipe.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>SourceInTime </b>Timecode. Converted to frames from
+midnight using both the &lt;frames per second&gt; and current &lt;FCM&gt; settings.
+Determines the start time of the source essence.</p>
+
+<p class=MsoNormal><b><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></b></p>
+
+<p class=MsoNormal><b>SourceOutTime </b>Timecode. Converted to frames from
+midnight using both the &lt;frames per second&gt; and current &lt;FCM&gt;
+settings. Data seems to be of no use and is totally redundant (and often wrong
+or misleading). Edl2aaf never uses this field in its calculations.</p>
+
+<p class=MsoNormal><b><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></b></p>
+
+<p class=MsoNormal><b>DestInTime </b>Timecode. Converted to frames from
+midnight using both the &lt;frames per second&gt; and current &lt;FCM&gt;
+settings. Determines the start time the SourceClips that are inserted into the
+TimeLineMobSlots referred to by &lt;channels&gt;.</p>
+
+<p class=MsoNormal><b><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></b></p>
+
+<p class=MsoNormal><b>DestOutTime</b> Timecode. Converted to frames from
+midnight using both the &lt;frames per second&gt; and current &lt;FCM&gt;
+settings. Determines the duration of the edit decision. Length =
+&lt;DestOutTime<b>&gt; - &lt;</b>DestInTime<b>&gt;</b>. Caveat: The next edit
+decision can have a DestInTime prior to DestOutTime of this edit decision,
+therefore neighbourhood checks need to be made before any Segments are
+constructed.</p>
+
+<p class=MsoNormal>Note that InTimes are inclusive and OutTimes are exclusive. <br>
+Thus: Duration = [DestOutTime<b>&gt; &lt;</b>DestInTime&gt;). This has the same
+semantics as the STL iterators in C++.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>Aud</b> &lt;Channels&gt; Series of positive integers.</p>
+
+<p class=MsoNormal>Modifies the previous Edit Decision to include extra Audio
+channels. Each number represent the audio channel to enable.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>M2</b> &lt;Tapename&gt; &lt;Speed&gt;
+&lt;SourceInTime&gt; </p>
+
+<p class=MsoNormal>Motion Memory command. Modifies the previous Edit Decision
+by causing the Source material to be stretched. &lt;Speed&gt; determines the
+play rate. It is declared in frames per second. &lt;Speed&gt; may be negative
+indicating reverse. Zero indicates still frame. One decimal place is allowed.
+The &lt;Tapename&gt; and &lt;SourceInTime&gt; must match one of the Edit
+Decisions that occur within the current &lt;EditNum&gt;. Therefore they may be
+two M2 commands following a Dissolve or Wipe modifying both the source essences
+separately. Causes the SourceClip to be inserted as an InputSegment of an
+OperationGroup. The OperationGroup has one parameter SpeedRatio set with a
+rational calculated as follows: Numerator = &lt;Speed&gt;*10. Denominator =
+&lt;frames per second&gt;*10. Multiplication by 10 allows the &lt;Speed&gt; to
+have one decimal place of accuracy.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>Comments</b> are indicated by * or COMMENT: at the start
+of a line. They are deemed to have the &lt;DestInTime&gt; of the current
+EditNum. If more than one comment occurs between edit decisions, the strings
+are concatenated, being separated with a newline. They are put into an
+EventMobSlot in the CompositionMob. Each comment string is stored in a
+CommentMarker with duration of one. StartTime = &lt;DestInTime&gt; as frames
+from midnight of current (most recently parsed) EditNum.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Split commands are ignored, as the data they contain is
+redundant. There are other commands that a 3600 EDL may include. These are not
+supported yet. These include: multiple M2 commands affecting one source essence
+in one edit decision (allowing for variable speed stretches) and GPI Triggers.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Edls have a semantic subtlety called Insert Mode, where an
+edit decision can have &lt;DestInTime&gt; and &lt;DestOutTime&gt; that falls
+prior to the previous &lt;DestOutTime&gt;. This then causes the new edit decision
+to be ‘inserted’ in the previous edit. This functionality is not yet modelled.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>New (invented) EDL command to allow for mixed file and tape
+based conforms.</p>
+
+<p class=MsoNormal><b>Reel</b> &lt;Tapename&gt; &lt;channel&gt; &lt;InTime&gt;
+&lt;OutTime&gt; &lt;Pathname&gt;</p>
+
+<p class=MsoNormal>Inserts a Source and Master Mob with a FileEssenceDescriptor
+containing the Pathname. All source essence that falls between the timecodes on
+&lt;channels&gt; slots have SouceClips created referring to the Source Mob. The
+&lt;Aud&gt; command may follow as normal to allow for extra Audio tracks.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Issues to document: DataDefs (Video, Audio and Unknown),
+Edit Rates, Source Rates, Timecode TimelineMobSlots. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Editor: Grep for … and ??? and !!!</p>
+
+</div>
+
+</body>
+
+</html>
