@@ -1,3 +1,8 @@
+# Intro
+See https://edl2aaf.sourceforge.net/
+Official source: https://sourceforge.net/projects/edl2aaf/
+
+This is a repo I started over 20 years ago ... !
 
 # Building
 We require that vcpkg and cmake are installed.
